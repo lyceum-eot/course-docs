@@ -411,14 +411,14 @@ int main(){
     ...
     ```
 
-    - **for loop** is used to iterate through the array **input_string** which contains the input accepted from the user.
+    - **for loop** is used to iterate through the array **input_string** which contains the input accepted from the user
     - for loop syntax: **for(intialization; test-condition; updation)**
-    - *for ex:* **input_array = madam**, each of the character in the string **madam** is given an index postion, which starts from 0.
+    - *for ex:* **input_array = madam**, each of the character in the string **madam** is given an index postion, which starts from 0
     - characters assigned with the index positions: **m = 0, a = 1, d = 2, a = 3, m = 4**
     - hence, we the intialization starts with **i = 0**
-    - and it loops until it reaches last index position 4 being the character **"m"**.
-    - **i++** increments with 1 at each loop.
-    - when the value of **i** increments to 6 (i = 6), the condition **i < length** fails, because **i** is not less than the variable **length** (length = 5).
+    - and it loops until it reaches last index position 4 being the character **"m"**
+    - **i++** increments with 1 at each loop
+    - when the value of **i** increments to 6 (i = 6), the condition **i < length** fails, because **i** is not less than the variable **length** (length = 5)
 
 6. Logic to test the given string is palindrome or not:
     ```c
@@ -429,16 +429,16 @@ int main(){
         break;
     ...
     ```
-    - this logic works inside the for loop, at each iteration, i.e, for every character of the **input_string** array.
+    - this logic works inside the for loop, at each iteration, i.e, for every character of the **input_string** array
     - *for ex:* if(madam[0] != madam[5-0-1]) -> if(m != m)
-    - which fails the test condition, and the flag statement won't be executed.
-    - and loops until the if condition satisfies, in this example, for madam array, it never sets the flag to 1.
-    - Hence, the flag will always be set to 0 in this madam example.
+    - which fails the test condition, and the flag statement won't be executed
+    - and loops until the if condition satisfies, in this example, for madam array, it never sets the flag to 1
+    - Hence, the flag will always be set to 0 in this madam example
     - *for ex:* input_string = bangalore
     - then, if(bangalore[0] != bangalore[9-0-1] -> if(b != e)
-    - in this example the test condition is satisftied at the first iteration itself.
-    - Now, the flag will be set to 1, i.e, **flag = 1** statement inside the if condition is executed.
-    - Next statement being **break**, breaks out of the **for loop**, and jumps straight to the very next statements outside the for loop.
+    - in this example the test condition is satisftied at the first iteration itself
+    - Now, the flag will be set to 1, i.e, **flag = 1** statement inside the if condition is executed
+    - Next statement being **break**, breaks out of the **for loop**, and jumps straight to the very next statements outside the for loop
 
 7. Display message to inform the user if the **input_string** is palindrome or not:
     ```c
@@ -472,15 +472,15 @@ $gcc --version
 
 1. First step is to compile the above written palindrome C program:
     ```terminal
-    $gcc palindrome.c -o palindrome.o
+    $gcc palindrome.c -o palindrome
     ```
-    - Here, **palindrome.c** is the C file, and **gcc** command is used for compilation
-    - we're passing the compiled output to be stored in a **object file or binary file** called **palindrome.o**
+    - Here, **palindrome.c** is the C file, and **gcc** command is used to compile it
+    - we're passing the compiled output to be stored in an **object file or binary file** called **palindrome**
     - the above step of outputing the compiled program is done by passing the option **"-o"**
 
-2. In the second step use the **object file** created i.e., **palindrome.o** to execute the compiled program:
+2. In the second step use the **object file** created i.e., **palindrome** to execute the compiled program:
     ```terminal
-    $./palindrome.o
+    $./palindrome
     ```
     Here **"./"** is prefixed to the object code file to run it
 

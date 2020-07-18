@@ -1,5 +1,5 @@
 ---
-id: week3
+id: working-with-editors
 title: Working with Editors [Week 3 Session]
 ---
 

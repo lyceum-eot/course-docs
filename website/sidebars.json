@@ -3,7 +3,8 @@
     "Coursework": ["coursework"],
     "Contents": ["contents"],
     "Resources": ["resources"],
-    "Working With Editors": ["working-with-editors"]
+    "Working With Editors": ["working-with-editors"],
+    "Databases": ["databases"]
   },
   "docs-other": {
     "First Category": ["", ""]

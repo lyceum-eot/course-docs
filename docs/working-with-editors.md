@@ -1,6 +1,6 @@
 ---
 id: working-with-editors
-title: Working with Editors [Week 3 Session]
+title: Working with Editors
 ---
 
 ## Text Editors and IDEs

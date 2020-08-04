@@ -17,7 +17,7 @@ the two modules are further divided into actual contents:
     2. Fundamentals of OS - _**[OS Slides](https://docs.google.com/presentation/d/13UcAkVzmiPzW1Cyo7wRl51DJvaPu93e72ZyxdYqlAyM/edit#slide=id.gc6f90357f_0_0)**_
     3. Basics of Terminal - _**[Working With Editors](working-with-editors)**_
     4. Fundamentals of Networking
-    5. Basics of Databases
+    5. Intro to Databases - _**[Databases](databases)**_
     6. Talks on Personal Branding
 
 2. Implementation

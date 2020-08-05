@@ -5,7 +5,7 @@ title: Resources
 
 ## Resources being Used
 
-> The following are few Open Source platforms and tools used throughout the course, and thereby encouraging students to use Open Source softwares.
+The following are few Open Source platforms and tools used throughout the course, and thereby encouraging students to use Open Source softwares.
 
 ## For Online Classes
 

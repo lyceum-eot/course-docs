@@ -4,7 +4,7 @@
     "Contents": ["contents"],
     "Resources": ["resources"],
     "Working With Editors": ["working-with-editors"],
-    "Databases": ["databases"]
+    "Intro To Databases": ["intro-to-databases"]
   },
   "docs-other": {
     "First Category": ["", ""]

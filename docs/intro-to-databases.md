@@ -1,12 +1,11 @@
 ---
-id: databases
-title: Databases
+id: intro-to-databases
+title: Intro To Databases
 ---
-
-## Introduction to Databases
 
 ### What is Data?
 **Factual** or **raw data** that can be stored or recorded in some format.
+
 **Ex:** *textual data, numerical data, voice, images, etc.*
 
 ### What is Information?
@@ -203,7 +202,7 @@ conn = sqlite3.connect(':memory:')
 
 Here the **conn** object is assigned with sqlite3's **connect** method by passing the database filename **database_name.db**. If there exists no database file named *database_name.db*, it creates one.
 
-**3.** Commiting the **transactions(changes)**
+**3.** **Commiting** the **transactions(changes)**
 ```python
 ...
 conn.commit()
@@ -304,7 +303,7 @@ print(cur.fetchall())
 ```
 - **asterix(\*)** is used to **traverse through all the records** from the table
 - **fetchall()** method returns a list of **all the selected records** from the table
-- **fetchone()** fetches a **single record** pointed by the cursor
+- **fetchone()** fetches a **single record** selected by the **SELECT** command
 - **fetchmany(size)** accepts **size** as parameter that returns **number of specified records**
 
 Example for using **SELECT** command in **employees table**
@@ -323,7 +322,7 @@ cur.execute("UPDATE table_name SET column_name='new_value' WHERE column_name='ro
 ...
 ```
 - **SET** sets the record selected to the **new_value**
-- **WHERE** clause is used to identify the record by a constraint
+- **WHERE** clause is used to identify the record to be updated by a constraint
 - the constraint to identify a record is by using **an existing unique value of a column as the row_identifier**.
 
 Example for **updating** the **salary** of the record that has the data **E101**:
@@ -392,7 +391,7 @@ Here we are setting **column_n** to be *NOT NULL*,
 - this **column_n** is the same column from another table
 - In the next line we are using **FOREIGN KEY** constraint on **column_n**
 - and then referring it to the same column that is present in **another_table_name** using **REFERENCES** keyword.
-- So, the **column_n** in **table_name** should contain one of the **same unique values** stored in **column_n** of **another_table_name**
+- So, the **column_n** in **table_name** should contain one of the **same unique values** stored in **column_n** of the **another_table_name**
 
 As an example we'll create a new table named **emp_department**:
 ```python
@@ -408,12 +407,14 @@ cur.excute("""CREATE TABLE emp_department (
 ```
 In here we have the column **emp_id** which is the same column that is in **employees** table as well.
 
+---
 
-### Employee Database Python Program
+## Employee Database Python Program
 Here is the full program where we'll create two tables, insert values, update, and delete some records.
 - We'll use python's **functions for these queries** to be performed in an organized way.
 - We'll also be using **context managers (i.e, with)**, which **handles the opening and closing of database connections** or any other resources, without running into errors.
-- **Placeholders(?)** are used to **assign or pass values** into the table through the queries.
+- **Placeholders(?)** are used to**assign values to the columns** of the table.
+- We'll also use **key-value pairs** as a dictionary to **pass values or identify a record** through the queries.
 
 ```python
 import sqlite3
@@ -519,7 +520,9 @@ disp_all_records("emp_department")
 
 **NOTE:** These are the basic operations, and there are many ways of writing these transactions or queries in Python or any other language.
 
-### Using sqlite3 CLI
+---
+
+## Using sqlite3 CLI
 **SQLite** has its own **interactive session** through which one can interact with the databases created using SQLite. Use the following command at the terminal:
 ```bash
 $sqlite3
@@ -555,10 +558,22 @@ sqlite> .help
 $man sqlite3
 ```
 
-### For More Info
-Since these are the **basic operations** that are in any **database API**, there is more to know about SQLite or SQL in general.
+**NOTE:** One can also use SQL queries in here, but it's important to **terminate the SQL query** with **";"**.
 
-For more info about SQLite CLI - **[click here](https://www.sqlitetutorial.net/sqlite-commands/)**
+**Ex:** Display records of the table *emp_department*
+```bash
+sqlite> SELECT * FROM emp_department;
+```
+It returns **all the records** stored in the table **emp_department**.
 
-You can always look into SQLite's documentation for much more about it - **[click here](https://www.sqlitetutorial.net/)**
+---
+
+## For More Info
+Since these are the **basic operations** that of any **database API**, there is more to know about SQLite or SQL in general.
+
+For more info about **SQLite CLI** - _**<a href="https://www.sqlitetutorial.net/sqlite-commands/" target="_blank">CLICK HERE</a>**_
+
+You can always look into **SQLite's documentation** for much more about it - _**<a href="https://www.sqlitetutorial.net/" target="_blank">CLICK HERE</a>**_
+
+---
 

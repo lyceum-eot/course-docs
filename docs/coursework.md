@@ -14,12 +14,20 @@ This coursework _**LY-CS101**_ covers the fundamental concepts of programming, a
 #### Coursework contains two modules:
 
 1. Fundamentals
-> Fundamentals consists of the _basics_ of computer science.
+
+Fundamentals consists of the _basics_ of computer science.
+
 2. Implementation
-> Implementation module is where one applies the fundamental knowledge in practice.
+
+Implementation module is where one applies the fundamental knowledge in practice.
 
 ## Purpose of the coursework
 
-* The students of computer science not only needs to have a good understanding of the programming languages, also know how to use various tools to build a better app, and maintain their personal brand.
+- The students of computer science not only needs to have a good understanding of the programming languages, also know how to use various tools to build a better app, and maintain their personal brand.
 
-* The students should develop a programmer's mindset to solve the issue at hand, if at all one faces any problem while learning or while building an app.
+- The students should develop a programmer's mindset to solve the issue at hand, if at all one faces any problem while learning or while building an app.
+
+## Class Recordings
+Here is the **link for all the classes** that are conducted on our **BigBlueButton classrooms**:
+
+**__<a href="https://classroom.vrook.co/b/nik-p98-c2d" target="blank">CLICK HERE</a>__**

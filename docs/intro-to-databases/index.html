@@ -1,0 +1,534 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Intro To Databases · Lyceum Coursework</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="### What is Data?"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Intro To Databases · Lyceum Coursework"/><meta property="og:type" content="website"/><meta property="og:url" content="https://lyceum-eot.github.io//course-docs/"/><meta property="og:description" content="### What is Data?"/><meta property="og:image" content="https://lyceum-eot.github.io//course-docs/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://lyceum-eot.github.io//course-docs/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/course-docs/undefined"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/course-docs/js/scrollSpy.js"></script><link rel="stylesheet" href="/course-docs/css/main.css"/><script src="/course-docs/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/course-docs/"><h2 class="headerTitle">Lyceum Coursework</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/course-docs/docs/coursework" target="_self">Coursework</a></li><li class="siteNavGroupActive"><a href="/course-docs/docs/contents" target="_self">Contents</a></li><li class="siteNavGroupActive"><a href="/course-docs/docs/resources" target="_self">Resources</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Intro To Databases</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Coursework</h3><ul class=""><li class="navListItem"><a class="navItem" href="/course-docs/docs/coursework">LY-CS101</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Contents</h3><ul class=""><li class="navListItem"><a class="navItem" href="/course-docs/docs/contents">Contents</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Resources</h3><ul class=""><li class="navListItem"><a class="navItem" href="/course-docs/docs/resources">Resources</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Working With Editors</h3><ul class=""><li class="navListItem"><a class="navItem" href="/course-docs/docs/working-with-editors">Working with Editors</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Intro To Databases</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/course-docs/docs/intro-to-databases">Intro To Databases</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Intro To Databases</h1></header><article><div><span><h3><a class="anchor" aria-hidden="true" id="what-is-data"></a><a href="#what-is-data" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What is Data?</h3>
+<p><strong>Factual</strong> or <strong>raw data</strong> that can be stored or recorded in some format.</p>
+<p><strong>Ex:</strong> <em>textual data, numerical data, voice, images, etc.</em></p>
+<h3><a class="anchor" aria-hidden="true" id="what-is-information"></a><a href="#what-is-information" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What is Information?</h3>
+<p>It is a <strong>processed</strong> or <strong>meaningful</strong> data extracted from the raw or factual data.</p>
+<p><strong>Ex:</strong> <em>News articles, blog posts, playlists, graphs, etc.</em></p>
+<h3><a class="anchor" aria-hidden="true" id="difference-between-data--information"></a><a href="#difference-between-data--information" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Difference Between Data &amp; Information</h3>
+<p><strong>Analogy:</strong> Consider <em>pasta is the dish</em> that you need to cook, thus it can be called as the <strong>information</strong> that you need, and the <em>ingredients</em> to prepare pasta can be considered as the <strong>raw data</strong>.</p>
+<p><strong>NOTE:</strong> The difference between data and information depends on the use case or in the context that we require that particular data or information.</p>
+<h3><a class="anchor" aria-hidden="true" id="importance-of-data"></a><a href="#importance-of-data" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Importance of Data</h3>
+<p><strong>Data is all around us</strong>, without it there can be <em>no research done, you won't be able to get your products delivered to you, college cannot manage the administrative operations, and so on</em>. So, it becomes very crucial that we store the data in some format, and use that particular data to extract some meaningful information out of it.</p>
+<h3><a class="anchor" aria-hidden="true" id="what-is-database"></a><a href="#what-is-database" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What is Database?</h3>
+<p><strong>Collection of related data</strong> that contains real world entities.</p>
+<p><strong>Ex:</strong> <em>data about students, employees, automobile, agricultural crops, bank a/c, social media profiles, etc.</em></p>
+<h3><a class="anchor" aria-hidden="true" id="what-is-database-management-system-dbms"></a><a href="#what-is-database-management-system-dbms" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What is Database Management System (DBMS)?</h3>
+<p><strong>DBMS</strong> is an application that is used for <strong>storing, retrieving and processing the data</strong>.</p>
+<p><strong>NOTE:</strong> Databases + DBMS = <strong>Database System</strong></p>
+<h3><a class="anchor" aria-hidden="true" id="drawbacks-of-traditional-storage-methods"></a><a href="#drawbacks-of-traditional-storage-methods" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Drawbacks of Traditional Storage Methods</h3>
+<p>One can use traditional methods of storing data, <em>i.e, to use files or spreadsheets</em>. But there are some drawbacks to it.</p>
+<ul>
+<li>Not feasible to store <strong>large and complex</strong> data</li>
+<li><strong>Redundant data</strong> (duplicate data) might crop up at multiple locations in the database</li>
+<li>Due to redundancy there can be <strong>inconsistent data</strong> that has to be updated at multiple locations</li>
+<li>To interact with huge database we <strong>need an application to access, modify or update it regularly</strong>.</li>
+<li><strong>Data security</strong> is another major problem</li>
+</ul>
+<p>Here comes database management systems (DBMS) to the rescue, through which we can perform the above operations, and much more than that.</p>
+<p><strong>For ex:</strong></p>
+<ul>
+<li><p>Let's assume that you are running a <em>social club</em> where you want to store the <em>data of all the members, and the activities being conducted, and who are all participating it in, and so on</em>.</p></li>
+<li><p>As and when the club grows, you will reach a point where it becomes difficult to maintain the data in a spreadsheet.</p></li>
+<li><p>So, at that point you will have to use some DBMS to store the data, and use it.</p></li>
+<li><p>The social media platforms such as <em>Instagram or Twitter</em> are nothing but an enhanced and a generalized platforms that are similar to these small social clubs or groups.</p></li>
+<li><p>And these platforms must use some form of DBMS to store and manage the enormous amount of data that's being generated every day!</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="types-of-databases"></a><a href="#types-of-databases" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TYPES OF DATABASES</h3>
+<p>The databases can be categorized into <strong>centralized</strong> and <strong>decentralized databases</strong>.</p>
+<p>In centralized database the data is stored at <strong>one place</strong>.</p>
+<p><strong>Ex:</strong> <em>Library database in your college library may have only one central database system.</em></p>
+<p>In <strong>decentralized/distributed database</strong> the data is stored at <strong>multiple locations</strong>.</p>
+<p><strong>Ex:</strong> <em>Torrents or peer-to-peer file sharing system is the best example for distributed databases, where one can download a large file in the form of chunks of data from multiple locations.</em></p>
+<p>This is much more quicker, efficient, and resolves the overhead of serving the data stored at one single location.</p>
+<p>Here are some of the actual database types:</p>
+<ol>
+<li><p><strong>Relational databases:</strong> Stores the data in the form of <strong>rows/tuples</strong> and <strong>columns</strong> in a <strong>table</strong>.</p>
+<p><strong>Ex:</strong> <em>MySQL</em></p></li>
+<li><p><strong>NoSQL or Non-Relational databases:</strong> Stores <strong>complex</strong> and <strong>unstructured data</strong> in non-predefined and flexible database schema.</p>
+<p><strong>Ex:</strong> <em>MongoDB</em></p></li>
+<li><p><strong>Hierarchical databases:</strong> Stores data in the form of a <strong>tree like structure</strong>.</p>
+<p><strong>Ex:</strong> <em>IBM Information Management System (IMS)</em></p></li>
+<li><p><strong>Cloud databases:</strong> It is stored on a <strong>cloud platform and serves different types of databases</strong>, without the need of complete physical systems (<em>i.e, it uses virtual machines</em>).</p>
+<p><strong>Ex:</strong> <em>Amazon AWS, Google Cloud, DigitalOcean etc.</em></p></li>
+</ol>
+<h3><a class="anchor" aria-hidden="true" id="sql---structured-query-language"></a><a href="#sql---structured-query-language" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SQL - Structured Query Language:</h3>
+<p>It is the database language used to <strong>retrieve and manage relational data</strong>, or it is to be used with <strong>relational DBMS (RDBMS)</strong>.</p>
+<h3><a class="anchor" aria-hidden="true" id="sql-vendors-or-apps"></a><a href="#sql-vendors-or-apps" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SQL Vendors or Apps:</h3>
+<ol>
+<li>MySQL</li>
+<li>Postgres</li>
+<li>Oracle</li>
+<li>MariaDB</li>
+<li>etc.</li>
+</ol>
+<h3><a class="anchor" aria-hidden="true" id="nosql-databases"></a><a href="#nosql-databases" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>NoSQL Databases</h3>
+<p>Non-relational or NoSQL databases can store <strong>unstructured or complex data</strong>.</p>
+<p><strong>Ex:</strong> <em>Instagram post that contains the picture, caption, hashtags, comments, etc.</em></p>
+<h3><a class="anchor" aria-hidden="true" id="types-of-nosql-databases"></a><a href="#types-of-nosql-databases" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Types of NoSQL Databases</h3>
+<ol>
+<li><p><strong>Document-oriented database:</strong> Stores data in <strong>JSON-like document</strong>.</p>
+<p><strong>Ex:</strong> <em>MongoDB, Apache CouchDB, etc.</em></p></li>
+<li><p><strong>Key-value storage:</strong> Every <strong>key</strong> has a <strong>value</strong> attached to it (<em>i.e, key-value pairs</em>).</p>
+<p><strong>Ex:</strong> <em>Redis, Riak, etc.</em></p></li>
+<li><p><strong>Graph database:</strong> Stores data in the form of nodes and edges, where <strong>nodes are the entities</strong> and <strong>an edge is the relationship</strong> between the nodes.</p>
+<p><strong>Ex:</strong> <em>GraphDB, Neo4j, Grakn, etc</em></p></li>
+<li><p><strong>Wide-Column stores:</strong> Similar to relational databases, but the data is stored in <strong>large columns instead of rows</strong>.</p>
+<p><strong>Ex:</strong> <em>Apache Cassandra, ScyllaDB, etc.</em></p></li>
+</ol>
+<p><strong>NOTE:</strong> Each of these database applications comes with some pros and cons, and it has to be implemented according to the use case.</p>
+<hr>
+<h2><a class="anchor" aria-hidden="true" id="using-sqlite-library"></a><a href="#using-sqlite-library" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using SQLite Library</h2>
+<p><strong>SQLite is a software library</strong> that provides a <strong>relational database management system</strong>. It is a lightweight version of <em>MySQL</em> or other relational DBMS applications.
+Python's standard library comes with <em>PySQLite API</em> to work with <em>SQLite database</em>.</p>
+<p>Using SQLite database one can interact with its database without the need of a database server. Thus SQLite is designed to be <strong>serverless, and self-contained</strong> meaning it requires <em>minimal resources to run</em>.</p>
+<p><strong>NOTE:</strong> Using SQLite one can <strong>design the prototype of the database or the database schema (structure)</strong> without much hassles, and then easily migrate the database to the full-fledged DBMSs such as <em>MySQL or PostgreSQL</em>.</p>
+<h3><a class="anchor" aria-hidden="true" id="sql-fundamentals"></a><a href="#sql-fundamentals" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SQL Fundamentals</h3>
+<p>Here are some SQL fundamentals that one needs to know before diving into working with SQLite.</p>
+<h4><a class="anchor" aria-hidden="true" id="tables"></a><a href="#tables" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>Tables:</strong></h4>
+<p>It contains some related data in the form of <strong>rows and columns</strong>.</p>
+<ul>
+<li>a <em>table</em> is identified by its <strong>table name</strong>.</li>
+<li>a <em>column</em> is called as <strong>data field or column</strong> itself, that defines the data to be stored.</li>
+<li>a <em>column</em> will have a <strong>type</strong> in which the data is to be stored.</li>
+<li>a <em>column</em> may also have some <strong>constraints</strong> speficied with it.</li>
+<li>a <em>row</em> is the actual data, it is known as a <strong>tuple or record</strong>.</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="data-types-or-storage-class-in-sqlite"></a><a href="#data-types-or-storage-class-in-sqlite" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Data types or Storage class in SQLite:</h4>
+<p><strong>NOTE:</strong> SQL data types differ slightly among its vendors, please refer the documentations.</p>
+<ul>
+<li><strong>TEXT:</strong> stores <strong>characters or string</strong></li>
+<li><strong>INTEGER:</strong> stores <strong>whole numbers</strong> (either positive or negative)</li>
+<li><strong>REAL:</strong> stores <strong>floating point numbers</strong> or which has <strong>decimal values</strong></li>
+<li><strong>NULL:</strong> <strong>missing data</strong> or <strong>unkown</strong> values</li>
+<li><strong>BLOB:</strong> <strong>binary large object</strong>(BLOB) that can store <strong>large amount of data</strong> in binary format</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="column-constraints"></a><a href="#column-constraints" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Column Constraints:</h4>
+<p>Constraints are used to specify some rules for the data in a table</p>
+<ul>
+<li><strong>NOT NULL:</strong> the column cannot have a <strong>NULL (missing)</strong> value</li>
+<li><strong>PRIMARY KEY:</strong> the column that contains <strong>unique values</strong>, and should <strong>not be NULL</strong></li>
+<li><strong>FOREIGN KEY:</strong> is used to <strong>connect to another column in another table</strong>, that column should be of PRIMARY KEY constraint.</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="sql-query"></a><a href="#sql-query" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SQL Query:</h4>
+<p>It is a <strong>statement</strong> used to <strong>retrieve or store the data</strong> in a database.</p>
+<h4><a class="anchor" aria-hidden="true" id="transaction"></a><a href="#transaction" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Transaction:</h4>
+<p>It can be <strong>single or multiple queries</strong> or operations performed to a database.</p>
+<h4><a class="anchor" aria-hidden="true" id="sql-commands"></a><a href="#sql-commands" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SQL Commands:</h4>
+<p>Some reserved keywords that performs a specific operation:</p>
+<ul>
+<li><strong>CREATE</strong> is used to create a <strong>new database, table,</strong> etc</li>
+<li><strong>SELECT</strong> is to <strong>select data</strong> from the database</li>
+<li><strong>INSERT INTO</strong> is used to insert <strong>new records</strong> to a table</li>
+<li><strong>UPDATE</strong> <strong>modifies</strong> the <strong>existing records</strong> in a table</li>
+<li><strong>DELETE</strong> statement <strong>deletes</strong> an <strong>existing record</strong> from a table</li>
+<li><strong>WHERE</strong> clause is used to <strong>specify a condition while querying</strong> data from database</li>
+<li><strong>ALTER</strong> is used to <strong>modify database</strong> or <strong>tables</strong></li>
+<li><strong>DROP</strong> <strong>deletes</strong> a <strong>table</strong> <strong>(THIS ALSO DELETES THE DATA WITHIN THE TABLE)</strong></li>
+</ul>
+<p><strong>NOTE:</strong> All of the above keywords are not case sensitive, its a <strong>convention to write SQL commands in upper case</strong>.</p>
+<h3><a class="anchor" aria-hidden="true" id="creation-of-database--its-connection"></a><a href="#creation-of-database--its-connection" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Creation of Database &amp; its Connection</h3>
+<p>The steps to create a database and connect to it:</p>
+<p><strong>1.</strong> Importing <strong>sqlite3</strong> module</p>
+<p>sqlite3 is the module of PySQLite Database API.</p>
+<pre><code class="hljs css language-python"><span class="hljs-keyword">import</span> sqlite3
+</code></pre>
+<p><strong>2.</strong> Creating a <strong>connection object</strong></p>
+<p>There are two ways to connect to a database</p>
+<ol>
+<li>using <strong>database filename</strong>:</li>
+</ol>
+<pre><code class="hljs css language-python">...
+conn = sqlite3.connect(<span class="hljs-string">'database_name.db'</span>)
+</code></pre>
+<ol start="2">
+<li>use <strong>in memory object</strong> that runs <strong>freshly in the RAM</strong> everytime we run the sqlite python file:</li>
+</ol>
+<pre><code class="hljs css language-python">...
+conn = sqlite3.connect(<span class="hljs-string">':memory:'</span>)
+</code></pre>
+<p><strong>NOTE:</strong> This in memory object is useful, as we don't need to edit the file to comment out already created tables, inserted data, or any other query. Thus it can be <strong>used to create a prototype of the database schema</strong> needed, and later we can migrate it to a database file.</p>
+<p>Here the <strong>conn</strong> object is assigned with sqlite3's <strong>connect</strong> method by passing the database filename <strong>database_name.db</strong>. If there exists no database file named <em>database_name.db</em>, it creates one.</p>
+<p><strong>3.</strong> <strong>Commiting</strong> the <strong>transactions(changes)</strong></p>
+<pre><code class="hljs css language-python">...
+conn.commit()
+</code></pre>
+<p>It is important to commit or save the transactions(changes) that are being made to the database.</p>
+<p><strong>4.</strong> <strong>Close</strong> the <strong>connection</strong> object</p>
+<pre><code class="hljs css language-python">...
+conn.close()
+</code></pre>
+<p><strong>Close the connection</strong> to make sure the <strong>committed changes are not lost</strong>, or it might run into some errors.</p>
+<p>Here's an example of <strong>employee database</strong>, create a python file named <em>employee.py</em> and write the following code in it:</p>
+<pre><code class="hljs css language-python"><span class="hljs-keyword">import</span> sqlite3
+
+<span class="hljs-comment"># connect to the database employee.db</span>
+conn = sqlite3.connect(<span class="hljs-string">'employee.db'</span>)
+
+<span class="hljs-comment"># commit &amp; close the connection</span>
+conn.commit()
+conn.close()
+</code></pre>
+<p>Now run this python program, and it creates a database file named <em>employee.db</em> in the current directory.</p>
+<pre><code class="hljs css language-bash"><span class="hljs-variable">$python</span> employee.py
+</code></pre>
+<p><strong>NOTE:</strong> It is important to <strong>commit the transactions and close the connection</strong>, if not it may not save the changes, and run into some errors.</p>
+<h3><a class="anchor" aria-hidden="true" id="creation-of-tables-and-inserting-values"></a><a href="#creation-of-tables-and-inserting-values" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Creation of Tables and Inserting Values</h3>
+<p><strong>NOTE:</strong> You can use the same old <strong>employee.py</strong> python file.</p>
+<p><strong>1.</strong> create a <strong>cusor object</strong> is used to traverse the tuples in the database, acting like a pointer.</p>
+<pre><code class="hljs css language-python">...
+cur = conn.cursor()
+...
+</code></pre>
+<p><strong>2.</strong> Using SQL's <strong>CREATE</strong> statement create a <strong>table</strong></p>
+<pre><code class="hljs css language-python">...
+cur.execute(<span class="hljs-string">"""CREATE TABLE table_name(
+                column1 type constraint,
+                column2 type constraint,
+            ...
+            )"""</span>)
+...
+</code></pre>
+<ul>
+<li>cursor object <strong>cur</strong> is used as a <strong>pointer to perform some operation</strong>, be it while creating anything new or on existing data.</li>
+<li><strong>&quot;execute&quot;</strong> method of the cursor object is used to <strong>execute an SQL statement</strong>.</li>
+<li>Inside the parentheses <strong>triple quotes(&quot;&quot;&quot;...&quot;&quot;&quot;)</strong> is used span a single SQL statement or query into <strong>multiple lines</strong>.</li>
+<li><strong>&quot;CREATE TABLE table_name&quot;</strong> creates a table with the <strong>table_name</strong> that we provide.</li>
+<li><strong>&quot;column type constraints&quot;</strong> creates the specified <strong>data field or column</strong>, with it's <strong>data type</strong>, and with some <strong>rules or constraints</strong>.</li>
+</ul>
+<p>Here is an example of the <strong>employees table:</strong></p>
+<pre><code class="hljs css language-python">...
+cur = conn.cursor()
+
+cur.execute(<span class="hljs-string">"""CREATE TABLE employees(
+                first_name text NOT NULL,
+                last_name text NOT NULL,
+                emp_id text PRIMARY KEY,
+                salary integer
+            )"""</span>)
+...
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="inserting-data-into-tables"></a><a href="#inserting-data-into-tables" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Inserting Data into Tables</h3>
+<p>The query to insert values as the records of the table is:</p>
+<pre><code class="hljs css language-python">...
+cur.execute("INSERT INTO table_name VALUES('value1', value2, ...)
+...
+</code></pre>
+<p>Here is an example to <strong>insert data</strong> into <strong>employees table</strong>:</p>
+<pre><code class="hljs css language-python">...
+cur.execute(<span class="hljs-string">"INSERT INTO employees VALUES('John', 'Frusciante', 'E101', 74000)"</span>)
+cur.execute(<span class="hljs-string">"INSERT INTO employees VALUES('Chad', 'Smith', 'E102', 62000)"</span>)
+cur.execute(<span class="hljs-string">"INSERT INTO employees VALUES('Robert', 'Plant', 'E103', 86000)"</span>)
+...
+</code></pre>
+<p>In here, <strong>three records</strong> will be inserted into the <strong>employees table</strong>.</p>
+<h3><a class="anchor" aria-hidden="true" id="to-fetch-and-display-the-records"></a><a href="#to-fetch-and-display-the-records" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>To Fetch and Display the Records</h3>
+<p>We use <strong>SELECT</strong> command to select a <strong>single or multiple records</strong> from the table:</p>
+<pre><code class="hljs css language-python">...
+cur.execute(<span class="hljs-string">"SELECT * FROM table_name"</span>)
+print(cur.fetchall())
+...
+</code></pre>
+<ul>
+<li><strong>asterix(*)</strong> is used to <strong>traverse through all the records</strong> from the table</li>
+<li><strong>fetchall()</strong> method returns a list of <strong>all the selected records</strong> from the table</li>
+<li><strong>fetchone()</strong> fetches a <strong>single record</strong> selected by the <strong>SELECT</strong> command</li>
+<li><strong>fetchmany(size)</strong> accepts <strong>size</strong> as parameter that returns <strong>number of specified records</strong></li>
+</ul>
+<p>Example for using <strong>SELECT</strong> command in <strong>employees table</strong></p>
+<pre><code class="hljs css language-python">...
+cur.execute(<span class="hljs-string">"SELECT * FROM employees"</span>)
+print(cur.fetchmany(<span class="hljs-number">2</span>))
+</code></pre>
+<p>In here, it fetches only <strong>first two records</strong>.</p>
+<h3><a class="anchor" aria-hidden="true" id="to-update-existing-records"></a><a href="#to-update-existing-records" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>To Update Existing Records</h3>
+<p><strong>UPDATE</strong> statement uses a <strong>SET</strong> command, and <strong>WHERE</strong> clause to <strong>identify the specify record</strong> to be updated or modified, and then <strong>set the new value</strong>.</p>
+<pre><code class="hljs css language-python">...
+cur.execute(<span class="hljs-string">"UPDATE table_name SET column_name='new_value' WHERE column_name='row_identifier'"</span>)
+...
+</code></pre>
+<ul>
+<li><strong>SET</strong> sets the record selected to the <strong>new_value</strong></li>
+<li><strong>WHERE</strong> clause is used to identify the record to be updated by a constraint</li>
+<li>the constraint to identify a record is by using <strong>an existing unique value of a column as the row_identifier</strong>.</li>
+</ul>
+<p>Example for <strong>updating</strong> the <strong>salary</strong> of the record that has the data <strong>E101</strong>:</p>
+<pre><code class="hljs css language-python">...
+cur.execute(<span class="hljs-string">"UPDATE employees SET salary=94000 WHERE emp_id='E103'"</span>)
+...
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="to-delete-an-existing-record"></a><a href="#to-delete-an-existing-record" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>To Delete an Existing Record</h3>
+<p>We use the same <strong>WHERE</strong> clause to <strong>identify a record to be deleted</strong>.</p>
+<pre><code class="hljs css language-python">...
+cur.execute(<span class="hljs-string">"DELETE FROM table_name WHERE column_name='row_identifier'"</span>)
+...
+</code></pre>
+<p>Here we are using the same way of setting the constraint for the WHERE clause by using an <strong>existing unique value as row_identifier</strong>.</p>
+<p>Example to <strong>delete</strong> the employee record having <strong>emp_id 'E102'</strong>:</p>
+<pre><code class="hljs css language-python">...
+cur.execute(<span class="hljs-string">"DELETE FROM employees WHERE emp_id='E102'"</span>)
+...
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="primary-key-constraint"></a><a href="#primary-key-constraint" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PRIMARY KEY Constraint</h3>
+<p>It is a <strong>rule or constraint</strong> used on a column to only insert the <strong>unique values</strong> into that particular column, <strong>without any missing values</strong> (<em>i.e, NULL values</em>).</p>
+<pre><code class="hljs css language-python">...
+cur.execute(<span class="hljs-string">"""CREATE TABLE table_name (
+                column1 type PRIMARY KEY,
+                ...
+                ...
+            )"""</span>)
+...
+</code></pre>
+<p>Here is an example of <strong>employees table</strong> with <strong>primary key constraint</strong>:</p>
+<pre><code class="hljs css language-python">...
+cur.execute(<span class="hljs-string">"""CREATE TABLE employees (
+                ...
+                emp_id text PRIMARY KEY,
+                ...
+            )"""</span>)
+...
+</code></pre>
+<p>In here only the <strong>emp_id column</strong> is of <strong>PRIMARY KEY constraint</strong>.</p>
+<h3><a class="anchor" aria-hidden="true" id="foreign-key-constraint"></a><a href="#foreign-key-constraint" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>FOREIGN KEY Constraint</h3>
+<p>A <strong>FOREIGN KEY constraint</strong> is used to <strong>connect to another table by linking its PRIMARY KEY constraint column</strong>. This is one way of linking or connecting two tables in relational databases.</p>
+<pre><code class="hljs css language-python">...
+cur.execute(<span class="hljs-string">"""CREATE TABLE table_name (
+                ...
+                column_n type NOT NULL,
+                FOREIGN KEY (column_n)
+                    REFERENCES another_table_name (column_n)
+                ...
+            """</span>)
+...
+</code></pre>
+<p>Here we are setting <strong>column_n</strong> to be <em>NOT NULL</em>,</p>
+<ul>
+<li>this <strong>column_n</strong> is the same column from another table</li>
+<li>In the next line we are using <strong>FOREIGN KEY</strong> constraint on <strong>column_n</strong></li>
+<li>and then referring it to the same column that is present in <strong>another_table_name</strong> using <strong>REFERENCES</strong> keyword.</li>
+<li>So, the <strong>column_n</strong> in <strong>table_name</strong> should contain one of the <strong>same unique values</strong> stored in <strong>column_n</strong> of the <strong>another_table_name</strong></li>
+</ul>
+<p>As an example we'll create a new table named <strong>emp_department</strong>:</p>
+<pre><code class="hljs css language-python">...
+cur.excute(<span class="hljs-string">"""CREATE TABLE emp_department (
+                dept_name text NOT NULL,
+                designation text NOT NULL,
+                emp_id text NOT NULL,
+                FOREIGN KEY (emp_id)
+                    REFERENCES employees (emp_id)
+            )"""</span>)
+...
+</code></pre>
+<p>In here we have the column <strong>emp_id</strong> which is the same column that is in <strong>employees</strong> table as well.</p>
+<hr>
+<h2><a class="anchor" aria-hidden="true" id="employee-database-python-program"></a><a href="#employee-database-python-program" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Employee Database Python Program</h2>
+<p>Here is the full program where we'll create two tables, insert values, update, and delete some records.</p>
+<ul>
+<li>We'll use python's <strong>functions for these queries</strong> to be performed in an organized way.</li>
+<li>We'll also be using <strong>context managers (i.e, with)</strong>, which <strong>handles the opening and closing of database connections</strong> or any other resources, without running into errors.</li>
+<li><strong>Placeholders(?)</strong> are used to<strong>assign values to the columns</strong> of the table.</li>
+<li>We'll also use <strong>key-value pairs</strong> as a dictionary to <strong>pass values or identify a record</strong> through the queries.</li>
+</ul>
+<pre><code class="hljs css language-python"><span class="hljs-keyword">import</span> sqlite3
+
+<span class="hljs-comment">## connection object to connect to the database 'employee.db'</span>
+conn = sqlite3.connect(<span class="hljs-string">'employee.db'</span>)
+
+<span class="hljs-comment">## create a cursor object to point and execute a query in the database</span>
+cur = conn.cursor()
+
+<span class="hljs-comment">## with context manager to commit the transactions &amp;</span>
+<span class="hljs-comment">## to manage closing of the database connection</span>
+<span class="hljs-keyword">with</span> conn:
+<span class="hljs-comment">## create employees table with the columns:</span>
+<span class="hljs-comment">## first_name, last_name, emp_id &amp; salary</span>
+   cur.execute(<span class="hljs-string">"""CREATE TABLE employees (
+                    first_name text NOT NULL,
+                    last_name text NOT NULL,
+                    emp_id text PRIMARY KEY,
+                    salary integer NOT NULL
+                )"""</span>)
+
+<span class="hljs-keyword">with</span> conn:
+<span class="hljs-comment">## create emp_department table with the columns:</span>
+<span class="hljs-comment">## dept_name, designation &amp; emp_id</span>
+   cur.execute(<span class="hljs-string">"""CREATE TABLE emp_department (
+                    dept_name text NOT NULL,
+                    designation text NOT NULL,
+                    emp_id text NOT NULL,
+                    FOREIGN KEY (emp_id)
+                        REFERENCES employees (emp_id)
+                )"""</span>)
+
+<span class="hljs-comment">## a function to insert data into employees table &amp;</span>
+<span class="hljs-comment">## passing data through tuple "emp" as a parameter</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">insert_into_employees</span><span class="hljs-params">(emp)</span>:</span>
+    <span class="hljs-keyword">with</span> conn:
+        <span class="hljs-comment">## using ? as a placeholder to pass the data from the parameter "emp"</span>
+        cur.execute(<span class="hljs-string">"INSERT INTO employees VALUES(?, ?, ?, ?)"</span>, (emp))
+
+<span class="hljs-comment">## a function to insert data into emp_department table</span>
+<span class="hljs-comment">## passing data through tuple "emp_dept" as a parameter</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">insert_into_emp_department</span><span class="hljs-params">(emp_dept)</span>:</span>
+    <span class="hljs-keyword">with</span> conn:
+        cur.execute(<span class="hljs-string">"INSERT INTO emp_department VALUES(?, ?, ?)"</span>, (emp_dept))
+
+<span class="hljs-comment">## a function to update a particular record in employees table</span>
+<span class="hljs-comment">## passing the data to be updated through the dictionary "update_sal" as a parameter</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update_salary_employees</span><span class="hljs-params">(update_sal)</span>:</span>
+    <span class="hljs-keyword">with</span> conn:
+        <span class="hljs-comment">## using key-value pairs for assigning the data to its corresponding column</span>
+        <span class="hljs-comment">## "salary" being the column name is assigned with the key "sal", in turn using "sal" we assign the new value</span>
+        <span class="hljs-comment">## {...'sal':update_sal['e_sal']} here, sal is the key &amp; update_sal['e_sal'] is the new value</span>
+        cur.execute(<span class="hljs-string">"UPDATE employees SET salary=:sal WHERE emp_id=:id"</span>, {<span class="hljs-string">'id'</span>:update_sal[<span class="hljs-string">'e_id'</span>], <span class="hljs-string">'sal'</span>:update_sal[<span class="hljs-string">'e_sal'</span>]})
+
+<span class="hljs-comment">## a function to delete a record from employees table</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">del_record_employees</span><span class="hljs-params">(del_emp)</span>:</span>
+    <span class="hljs-keyword">with</span> conn:
+        <span class="hljs-comment">## using the same key-value pair way of assigning the data to its corresponding columns</span>
+        <span class="hljs-comment">## since "emp_id" is the column, "id" is assigned to it as the key,</span>
+        <span class="hljs-comment">## and inside the {'id': del_emp}, del_emp is the value</span>
+        cur.execute(<span class="hljs-string">"DELETE FROM employees WHERE emp_id=:id"</span>, {<span class="hljs-string">'id'</span>: del_emp})
+
+<span class="hljs-comment">## a function to display all the records of a table</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">disp_all_records</span><span class="hljs-params">(table_name)</span>:</span>
+    <span class="hljs-keyword">with</span> conn:
+        cur.execute(<span class="hljs-string">"SELECT * FROM "</span> + table_name)
+        print(cur.fetchall())
+
+<span class="hljs-comment">## passing data to be inserted into employees table</span>
+<span class="hljs-comment">## datafields order: ('fist_name', 'last_name', 'emp_id', salary)</span>
+emp_john = (<span class="hljs-string">'John'</span>, <span class="hljs-string">'Frusciante'</span>, <span class="hljs-string">'E101'</span>, <span class="hljs-number">74000</span>)
+emp_chad = (<span class="hljs-string">'Chad'</span>, <span class="hljs-string">'Smith'</span>, <span class="hljs-string">'E102'</span>, <span class="hljs-number">62000</span>)
+emp_robert = (<span class="hljs-string">'Robert'</span>, <span class="hljs-string">'Plant'</span>, <span class="hljs-string">'E103'</span>, <span class="hljs-number">86000</span>)
+
+insert_into_employees(emp_john)
+insert_into_employees(emp_chad)
+insert_into_employees(emp_robert)
+
+<span class="hljs-comment">## passing data to be inserted into emp_department table</span>
+<span class="hljs-comment">## datafields order: ('dept_name', 'designation', 'emp_id')</span>
+dept_john = (<span class="hljs-string">'String Instruments'</span>, <span class="hljs-string">'Guitarist'</span>, <span class="hljs-string">'E101'</span>)
+dept_chad = (<span class="hljs-string">'Percussion'</span>, <span class="hljs-string">'Drummer'</span>, <span class="hljs-string">'E102'</span>)
+dept_robert = (<span class="hljs-string">'Vocals'</span>, <span class="hljs-string">'Vocalist'</span>, <span class="hljs-string">'E103'</span>)
+
+insert_into_emp_department(dept_john)
+insert_into_emp_department(dept_chad)
+insert_into_emp_department(dept_robert)
+
+<span class="hljs-comment">## passing the salary to be updated using a dictionary to update it</span>
+up_sal_john = {<span class="hljs-string">'e_id'</span>: <span class="hljs-string">'E101'</span>, <span class="hljs-string">'e_sal'</span>: <span class="hljs-number">82000</span>}
+update_salary_employees(up_sal_john)
+
+
+<span class="hljs-comment">## passing an emp_id as an arugment to delete that particular record</span>
+del_record_employees(<span class="hljs-string">'E102'</span>)
+
+<span class="hljs-comment">## call disp_all_records function by passing table_name</span>
+<span class="hljs-comment">## as argument to fetch &amp; display records.</span>
+disp_all_records(<span class="hljs-string">"employees"</span>)
+disp_all_records(<span class="hljs-string">"emp_department"</span>)
+</code></pre>
+<p><strong>NOTE:</strong> These are the basic operations, and there are many ways of writing these transactions or queries in Python or any other language.</p>
+<hr>
+<h2><a class="anchor" aria-hidden="true" id="using-sqlite3-cli"></a><a href="#using-sqlite3-cli" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using sqlite3 CLI</h2>
+<p><strong>SQLite</strong> has its own <strong>interactive session</strong> through which one can interact with the databases created using SQLite. Use the following command at the terminal:</p>
+<pre><code class="hljs css language-bash"><span class="hljs-variable">$sqlite3</span>
+</code></pre>
+<ol>
+<li>To <strong>open a database</strong> file:</li>
+</ol>
+<pre><code class="hljs css language-bash">sqlite&gt; .open database_name.db
+</code></pre>
+<ol start="2">
+<li>To view the database <strong>schema</strong>:</li>
+</ol>
+<pre><code class="hljs css language-bash">sqlite&gt; .schema table_name
+</code></pre>
+<ol start="3">
+<li>To display all the <strong>tables</strong> in the database:</li>
+</ol>
+<pre><code class="hljs css language-bash">sqlite&gt; .tables
+</code></pre>
+<ol start="4">
+<li>To quit or <strong>exit</strong>:</li>
+</ol>
+<pre><code class="hljs css language-bash">sqlite&gt; .quit
+</code></pre>
+<ol start="5">
+<li>To show all the <strong>sqlite3 commands</strong>:</li>
+</ol>
+<pre><code class="hljs css language-bash">sqlite&gt; .<span class="hljs-built_in">help</span>
+</code></pre>
+<ol start="6">
+<li>For more information about <strong>sqlite3 CLI</strong>, read the <strong>man pages</strong>:</li>
+</ol>
+<pre><code class="hljs css language-bash"><span class="hljs-variable">$man</span> sqlite3
+</code></pre>
+<p><strong>NOTE:</strong> One can also use SQL queries in here, but it's important to <strong>terminate the SQL query</strong> with <strong>&quot;;&quot;</strong>.</p>
+<p><strong>Ex:</strong> Display records of the table <em>emp_department</em></p>
+<pre><code class="hljs css language-bash">sqlite&gt; SELECT * FROM emp_department;
+</code></pre>
+<p>It returns <strong>all the records</strong> stored in the table <strong>emp_department</strong>.</p>
+<hr>
+<h2><a class="anchor" aria-hidden="true" id="for-more-info"></a><a href="#for-more-info" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>For More Info</h2>
+<p>Since these are the <strong>basic operations</strong> that of any <strong>database API</strong>, there is more to know about SQLite or SQL in general.</p>
+<p>For more info about <strong>SQLite CLI</strong> - <em><strong><a href="https://www.sqlitetutorial.net/sqlite-commands/" target="_blank">CLICK HERE</a></strong></em></p>
+<p>You can always look into <strong>SQLite's documentation</strong> for much more about it - <em><strong><a href="https://www.sqlitetutorial.net/" target="_blank">CLICK HERE</a></strong></em></p>
+<hr>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/course-docs/docs/working-with-editors"><span class="arrow-prev">← </span><span>Working with Editors</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#using-sqlite-library">Using SQLite Library</a><ul class="toc-headings"><li><a href="#sql-fundamentals">SQL Fundamentals</a></li><li><a href="#creation-of-database--its-connection">Creation of Database &amp; its Connection</a></li><li><a href="#creation-of-tables-and-inserting-values">Creation of Tables and Inserting Values</a></li><li><a href="#inserting-data-into-tables">Inserting Data into Tables</a></li><li><a href="#to-fetch-and-display-the-records">To Fetch and Display the Records</a></li><li><a href="#to-update-existing-records">To Update Existing Records</a></li><li><a href="#to-delete-an-existing-record">To Delete an Existing Record</a></li><li><a href="#primary-key-constraint">PRIMARY KEY Constraint</a></li><li><a href="#foreign-key-constraint">FOREIGN KEY Constraint</a></li></ul></li><li><a href="#employee-database-python-program">Employee Database Python Program</a></li><li><a href="#using-sqlite3-cli">Using sqlite3 CLI</a></li><li><a href="#for-more-info">For More Info</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/course-docs/" class="nav-home"></a><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Discord</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2020 Lyceum</section></footer></div></body></html>
